@@ -1,55 +1,46 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>The Vue View</title>
-  <link rel="stylesheet" type="text/css" href="./css/reset.css">
-  <link rel="stylesheet" type="text/css" href="./css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
-  <script src="./js/app.js" defer></script>
-</head>
-
-<body>
-  <div id="app">
-    <h1>THE VUE VIEW</h1>
-    <div class="user">
-      <div class="user-information">
-        <div class="image-container">
-          <img src="https://s3.amazonaws.com/codecademy-content/courses/what-is-vue/profile.jpeg" alt="profile picture">
+  <head>
+    <title>The Vue View</title>
+    <link href="./css/reset.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+    <script src="./js/app.js" defer></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>THE VUE VIEW</h1>
+      <div class="user">
+        <div class="user-information">
+          <div class="image-container">
+            <img alt="profile picture" src="https://s3.amazonaws.com/codecademy-content/courses/what-is-vue/profile.jpeg">
+          </div>
+          <h3>{{ username }}</h3>
         </div>
-        <h3>{{ username }}</h3>
+        <div class="user-bio" v-if="bio">
+          <em>Bio:
+          </em>
+          {{ bio }}
+        </div>
       </div>
-      <div class="user-bio">
-        <em>Bio: </em> {{ bio }}
+      <div class="tweets">
+        <div class="tweet" v-for="tweet in tweets">
+          <h3>{{ username }}</h3>
+          <p>{{ tweet }}</p>
+        </div>
       </div>
-    </div>
-    <div class="tweets">
-      <div class="tweet">
-        <h3>{{ username }}</h3>
-        <p>{{ tweets[0] }}</p>
-      </div>
-      <div class="tweet">
-        <h3>{{ username }}</h3>
-        <p>{{ tweets[1] }}</p>
-      </div>
-      <div class="tweet">
-        <h3>{{ username }}</h3>
-        <p>{{ tweets[2] }}</p>
-      </div>
-    </div>
-    <div class="settings">
-      <h2>Settings</h2>
-      <label for="username">Username</label>
-      <input type="text" value="username" placeholder="Username" />
-      <label for="bio">Bio</label>
-      <textarea value="bio" placeholder="Bio"></textarea>
-      <label for="tweet">New Tweet</label>
-      <div class="new-tweet">
-        <input type="text" value="tweet" placeholder="New Tweet" />
-        <button>Add Tweet</button>
+      <div class="settings">
+        <h2>Settings</h2>
+        <label for="username">Username</label>
+        <input placeholder="Username" type="text" v-model="username" value="username"/>
+        <label for="bio">Bio</label>
+        <textarea placeholder="Bio" v-model="bio" value="bio"></textarea>
+        <label for="tweet">New Tweet</label>
+        <div class="new-tweet">
+          <input placeholder="New Tweet" type="text" v-model="newTweet" value="tweet"/>
+          <button v-on:click="tweets.push(newTweet)">Add Tweet</button>
+        </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
