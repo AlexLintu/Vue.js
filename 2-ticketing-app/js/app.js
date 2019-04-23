@@ -38,13 +38,18 @@ const app = new Vue({
       if (this.ticketType === 'vip') {
         readableTicketType = 'VIP';
       }
-
       let ticketPluralization = 'tickets';
       if (this.ticketQuantity === 1) {
         ticketPluralization = 'ticket';
       }
-
       return this.ticketQuantity + ' ' + readableTicketType + ' ' + ticketPluralization;
+    }
+  },
+  watch: {
+    specialRequests: function (newRequests, oldRequests) {
+      if (newRequests.toLowerCase().includes('meet and greet') || newRequests.toLowerCase().includes('meet-and-greet')) {
+        this.ticketType = 'vip';
+      }
     }
   }
 });
