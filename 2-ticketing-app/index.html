@@ -18,14 +18,7 @@
         alt="logo">
       <h1>TICKETBOX</h1>
     </header>
-
-    <!-- Developer Pane -->
-    <div id="developer-pane">
-      <h2>Developer Pane</h2>
-      <div><em>Purchase Agreement Signed</em>: <span>{{ purchaseAgreementSigned }}</span></div>
-    </div>
-
-    <form>
+    <form @reset="resetFields">
       <div class="form-row">
         <div class="form-field">
           <label for="first-name">First Name</label>
