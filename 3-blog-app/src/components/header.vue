@@ -28,16 +28,16 @@ li {
 a {
   color: #fff;
   text-decoration: none;
-  padding: 12px;
-  border-radius: 5px;
+  padding: 6px 8px;
+  border-radius: 10px;
 }
 nav {
-  background: crimson;
-  padding: 30px 0;
+  background: #444;
+  padding: 14px 0;
   margin-bottom: 40px;
 }
 .router-link-active {
-  background: rgba(255, 255, 255, 0.8);
+  background: #eee;
   color: #444;
 }
 </style>

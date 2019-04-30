@@ -1,12 +1,9 @@
 <template>
   <div id="show-blogs">
-    <h1>All Blog Articles</h1>
+    <h1>List Blog Titles</h1>
     <input type="text" v-model="search" placeholder="search blogs">
     <div v-for="blog in filteredBlogs" class="single-blog">
-      <router-link v-bind:to="'/blog/' + blog.id">
-        <h2>{{ blog.title }}</h2>
-      </router-link>
-      <article>{{ blog.body }}</article>
+      <h2>{{ blog.title }}</h2>
     </div>
   </div>
 </template>
@@ -42,9 +39,5 @@ export default {
   margin: 20px 0;
   box-sizing: border-box;
   background: #eee;
-}
-#show-blogs a {
-  color: #444;
-  text-decoration: none;
 }
 </style>

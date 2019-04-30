@@ -8,6 +8,7 @@
 <script>
 // Imports
 import showBlogs from "./components/showBlogs.vue";
+import listBlogs from "./components/listBlogs.vue";
 import header from "./components/header.vue";
 export default {
   components: {
@@ -21,8 +22,9 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css?family=Nunito:600");
 body {
   margin: 0;
-  font-family: "Nunito SemiBold";
+  font-family: "Nunito", sans-serif;
 }
 </style>
