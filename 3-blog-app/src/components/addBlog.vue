@@ -4,30 +4,55 @@
 
     <form>
       <label>Blog Title:</label>
-      <input type="text" required>
+      <input type="text" v-model.lazy="blog.title" required>
       <label>Blog Content:</label>
-      <textarea></textarea>
+      <textarea v-model.lazy="blog.content"></textarea>
+
+      <div id="checkboxes">
+        <label>Blogger 1</label>
+        <input type="checkbox" value="blogger1" v-model="blog.categories">
+        <label>Blogger 2</label>
+        <input type="checkbox" value="blogger2" v-model="blog.categories">
+        <label>Blogger 3</label>
+        <input type="checkbox" value="blogger3" v-model="blog.categories">
+        <label>Blogger 4</label>
+        <input type="checkbox" value="blogger4" v-model="blog.categories">
+      </div>
+
+      <label></label>
+      <select v-model="blog.author">
+        <option></option>
+      </select>
     </form>
 
     <div id="preview">
       <h3>Preview Blog</h3>
-      <p>Blog title:</p>
+      <p>Blog title: {{ blog.title }}</p>
       <p>Blog content:</p>
+      <p>{{ blog.content }}</p>
+      <p>Blog Categories:</p>
+      <ul>
+        <li v-for="category in blog.categories">{{ category }}</li>
+      </ul>
     </div>
   </div>
 </template>
 
-
-
 <script>
 export default {
   data() {
-    return {};
+    return {
+      blog: {
+        title: "",
+        content: "",
+        categories: [],
+        author: ""
+      },
+      authors: ["Elon", "Alex", "Bob"]
+    };
   }
 };
 </script>
-
-
 
 <style>
 #add-blog * {
@@ -54,5 +79,14 @@ textarea {
 }
 h3 {
   margin-top: 10px;
+}
+
+#checkboxes input {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#checkboxes label {
+  display: inline-block;
 }
 </style>
