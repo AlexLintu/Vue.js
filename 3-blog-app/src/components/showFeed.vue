@@ -1,8 +1,8 @@
 <template>
-  <div id="show-blogs">
+  <div id="show-clients">
     <h1>All Clients</h1>
     <input type="text" v-model="search" placeholder="search clients">
-    <div v-for="client in filteredBlogs" class="single-client">
+    <div v-for="client in filteredClients" class="single-client">
       <router-link v-bind:to="'/client/' + client.id">
         <h2>{{ client.name }}</h2>
       </router-link>
@@ -11,6 +11,27 @@
       <p>Representative: {{ client.representative }}</p>
       <article>{{ client.notes }}</article>
     </div>
+
+    <!-- Feed Pagination -->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
   </div>
 </template>
 
@@ -20,13 +41,13 @@ import searchMixin from "../mixins/searchMixin";
 export default {
   data() {
     return {
-      blogs: [],
+      clients: [],
       search: ""
     };
   },
   created() {
-    this.$http.get("").then(function(data) {
-      this.blogs = data.body.slice(0, 10);
+    this.$http.get("http://10.211.7.152/leads").then(function(data) {
+      this.clients = data.body.slice(0, 10);
     });
   },
   mixins: [searchMixin]
@@ -34,7 +55,7 @@ export default {
 </script>
 
 <style>
-#show-blogs {
+#show-clients {
   max-width: 800px;
   margin: 0px auto;
 }
@@ -44,7 +65,7 @@ export default {
   box-sizing: border-box;
   background: #eee;
 }
-#show-blogs a {
+#show-clients a {
   color: #444;
   text-decoration: none;
 }

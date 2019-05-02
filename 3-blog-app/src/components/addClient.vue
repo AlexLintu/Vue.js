@@ -78,7 +78,7 @@ export default {
   methods: {
     post: function() {
       this.$http
-        .post("", {
+        .post("http://10.211.7.152/leads", {
           source: this.client.source,
           tm_acct_id: this.client.tm_acct_id,
           name: this.client.name,

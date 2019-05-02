@@ -1,7 +1,7 @@
 export default {
   computed: {
-    filteredBlogs: function () {
-      return this.blogs.filter((client) => {
+    filteredClients: function () {
+      return this.clients.filter((client) => {
         return client.name.match(this.search);
       });
     }

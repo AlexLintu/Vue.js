@@ -1,33 +1,35 @@
 <template>
-  <div id="single-blog">
-    <h1>{{ blog.title }}</h1>
-    <article>{{ blog.body }}</article>
+  <div id="single-client">
+    <h1>{{ client.source }}</h1>
+    <article>{{ client.tm_acct_id }}</article>
+    <h2>{{ client.status }}</h2>
+    <p>TM ID: {{ client.phone_number }}</p>
+    <p>Representative: {{ client.representative }}</p>
+    <article>{{ client.notes }}</article>
   </div>
 </template>
 
 <script>
 // Imports
-import searchMixin from "../mixins/searchMixin";
+
 export default {
   data() {
     return {
       id: this.$route.params.id,
-      blog: {}
+      client: {}
     };
   },
   created() {
-    this.$http
-      .get("http://jsonplaceholder.typicode.com/posts/" + this.id)
-      .then(function(data) {
-        // console.log(data);
-        this.blog = data.body;
-      });
+    this.$http.get("http://10.211.7.152/leads/" + this.id).then(function(data) {
+      console.log(data);
+      this.client = data.body[0];
+    });
   }
 };
 </script>
 
 <style>
-#single-blog {
+#single-client {
   max-width: 960px;
   margin: 0 auto;
 }
