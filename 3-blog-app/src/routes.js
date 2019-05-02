@@ -1,17 +1,17 @@
-import addBlog from './components/addBlog.vue';
-import showBlogs from './components/showBlogs.vue';
-import singleBlog from './components/singleBlog.vue';
+import addClient from './components/addClient.vue';
+import showFeed from './components/showFeed.vue';
+import singleClient from './components/singleClient.vue';
 
 export default [{
     path: '/',
-    component: showBlogs
+    component: showFeed
   },
   {
     path: '/add',
-    component: addBlog
+    component: addClient
   },
   {
-    path: '/blog/:id',
-    component: singleBlog
+    path: '/client/:id',
+    component: singleClient
   }
 ]

@@ -2,10 +2,10 @@
   <nav>
     <ul>
       <li>
-        <router-link to="/" exact>Blog</router-link>
+        <router-link to="/" exact>Feed</router-link>
       </li>
       <li>
-        <router-link to="/add" exact>Add a new blog</router-link>
+        <router-link to="/add" exact>Add New</router-link>
       </li>
     </ul>
   </nav>
