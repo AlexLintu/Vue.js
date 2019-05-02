@@ -2,42 +2,67 @@
   <div id="add-client">
     <h2>Add a New Client</h2>
     <form v-if="!submitted">
-      <label>Client's Name:</label>
-      <input type="text" v-model.lazy="client.name" required>
+      <div class="form-group">
+        <label>Representative's Name:</label>
+        <input type="text" class="form-control" v-model.lazy="client.representative" required>
+      </div>
 
-      <label>Rep's Name:</label>
-      <input type="text" v-model.lazy="client.representative" required>
+      <div class="form-group">
+        <label>Client's Name:</label>
+        <input type="text" class="form-control" v-model.lazy="client.name" required>
+      </div>
 
-      <label>Source:</label>
-      <input type="text" v-model.lazy="client.source" required>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Source:</label>
+          <input type="text" class="form-control" v-model.lazy="client.source" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Product:</label>
+          <input type="text" class="form-control" v-model.lazy="client.product" required>
+        </div>
+      </div>
 
-      <label>Email Address:</label>
-      <input type="text" v-model.lazy="client.email_address" required>
+      <div class="form-group">
+        <label>Email Address:</label>
+        <input type="text" class="form-control" v-model.lazy="client.email_address" required>
+      </div>
 
-      <label>Phone Number:</label>
-      <input type="text" v-model.lazy="client.phone_number" required>
+      <div class="form-group">
+        <label>Phone Number:</label>
+        <input type="text" class="form-control" v-model.lazy="client.phone_number" required>
+      </div>
 
-      <label>Product:</label>
-      <input type="text" v-model.lazy="client.product" required>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Status:</label>
+          <select class="form-control" v-model="client.status">
+            <option v-for="status in statuses">{{ status }}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Revenue:</label>
+          <input type="number" class="form-control" v-model.number="client.revenue" required>
+        </div>
+      </div>
 
-      <label>Revenue:</label>
-      <input type="number" v-model.number="client.revenue" required>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>FSE:</label>
+          <input type="number" class="form-control" v-model.number="client.fse" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>TM ID:</label>
+          <input type="number" class="form-control" v-model.number="client.tm_acct_id" required>
+        </div>
+      </div>
 
-      <label>FSE:</label>
-      <input type="number" v-model.number="client.fse" required>
+      <div class="form-group">
+        <label>Notes:</label>
+        <textarea class="form-control" v-model.lazy.trim="client.notes"></textarea>
+      </div>
 
-      <label>TM ID:</label>
-      <input type="number" v-model.number="client.tm_acct_id" required>
-
-      <label>Notes:</label>
-      <textarea v-model.lazy.trim="client.notes"></textarea>
-
-      <label>Status:</label>
-      <select v-model="client.status">
-        <option v-for="status in statuses">{{ status }}</option>
-      </select>
-
-      <button v-on:click.prevent="post">Add Client</button>
+      <button v-on:click.prevent="post" class="btn btn-primary">Add Client</button>
     </form>
 
     <div v-if="submitted">
@@ -101,29 +126,8 @@ export default {
 </script>
 
 <style scoped>
-#add-client * {
-  box-sizing: border-box;
-}
 #add-client {
   margin: 20px auto;
-  max-width: 500px;
-}
-label {
-  display: block;
-  margin: 20px 0 10px;
-}
-input[type="text"],
-textarea {
-  display: block;
-  width: 100%;
-  padding: 8px;
-}
-#preview {
-  padding: 10px 20px;
-  border: 1px dotted #ccc;
-  margin: 30px 0;
-}
-h3 {
-  margin-top: 10px;
+  max-width: 600px;
 }
 </style>

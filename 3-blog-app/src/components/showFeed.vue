@@ -47,6 +47,7 @@ export default {
   },
   created() {
     this.$http.get("http://10.211.7.152/leads").then(function(data) {
+      console.log(data.body);
       this.clients = data.body.slice(0, 10);
     });
   },
